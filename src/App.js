@@ -1,6 +1,20 @@
+import { useEffect } from "react";
 import "./App.css";
 
 function App() {
+  useEffect(function () {
+    async function fetchCurrency() {
+      const result = fetch(
+        `https://api.frankfurter.app/latest?amount=10&from=GBP&to=USD`
+      )
+        .then((resp) => resp.json())
+        .then((data) => {
+          console.log(data.rates);
+        });
+    }
+    fetchCurrency();
+  }, []);
+
   return (
     <div>
       <input type="text" />
