@@ -5,6 +5,7 @@ function App() {
   const [value, setValue] = useState(0);
   const [fromValue, setFromValue] = useState("USD");
   const [toValue, setToValue] = useState("USD");
+  const [result, setResult] = useState("");
 
   useEffect(
     function () {
@@ -14,7 +15,10 @@ function App() {
         )
           .then((resp) => resp.json())
           .then((data) => {
-            console.log(data.rates);
+            if (data.rates !== undefined) {
+              console.log(data.rates);
+              handleResult(data.rates);
+            }
           });
       }
       fetchCurrency();
@@ -34,6 +38,18 @@ function App() {
     setToValue(event.target.value);
   };
 
+  function handleResult(data) {
+    if (toValue === "USD") {
+      setResult(data.USD);
+    } else if (toValue === "EUR") {
+      setResult(data.EUR);
+    } else if (toValue === "CAD") {
+      setResult(data.CAD);
+    } else {
+      setResult(data.INR);
+    }
+  }
+
   return (
     <div>
       <input type="text" onChange={handleChange} value={value} />
@@ -49,6 +65,9 @@ function App() {
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
+      <p>
+        {result} {toValue}
+      </p>
     </div>
   );
 }
