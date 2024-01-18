@@ -1,23 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  useEffect(function () {
-    async function fetchCurrency() {
-      const result = fetch(
-        `https://api.frankfurter.app/latest?amount=10&from=GBP&to=USD`
-      )
-        .then((resp) => resp.json())
-        .then((data) => {
-          console.log(data.rates);
-        });
-    }
-    fetchCurrency();
-  }, []);
+  const [value, setValue] = useState(0);
+  useEffect(
+    function () {
+      async function fetchCurrency() {
+        const result = fetch(
+          `https://api.frankfurter.app/latest?amount=${value}&from=GBP&to=USD`
+        )
+          .then((resp) => resp.json())
+          .then((data) => {
+            console.log(data.rates);
+          });
+      }
+      fetchCurrency();
+    },
+    [value]
+  );
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   return (
     <div>
-      <input type="text" />
+      <input type="text" onChange={handleChange} value={value} />
       <select>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
