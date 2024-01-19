@@ -16,8 +16,7 @@ function App() {
           .then((resp) => resp.json())
           .then((data) => {
             if (data.rates !== undefined) {
-              console.log(data.rates);
-              handleResult(data.rates);
+              handleResult(data.rates[toValue]);
             }
           });
       }
@@ -39,15 +38,7 @@ function App() {
   };
 
   function handleResult(data) {
-    if (toValue === "USD") {
-      setResult(data.USD);
-    } else if (toValue === "EUR") {
-      setResult(data.EUR);
-    } else if (toValue === "CAD") {
-      setResult(data.CAD);
-    } else {
-      setResult(data.INR);
-    }
+    setResult(data);
   }
 
   return (
