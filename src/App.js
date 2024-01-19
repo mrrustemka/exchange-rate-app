@@ -4,8 +4,8 @@ import "./App.css";
 function App() {
   const [value, setValue] = useState(0);
   const [fromValue, setFromValue] = useState("USD");
-  const [toValue, setToValue] = useState("USD");
-  const [result, setResult] = useState("");
+  const [toValue, setToValue] = useState("EUR");
+  const [result, setResult] = useState(0);
 
   useEffect(
     function () {
@@ -60,8 +60,8 @@ function App() {
         <option value="INR">INR</option>
       </select>
       <select onChange={handleToChange} value={toValue}>
-        <option value="USD">USD</option>
         <option value="EUR">EUR</option>
+        <option value="USD">USD</option>
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
