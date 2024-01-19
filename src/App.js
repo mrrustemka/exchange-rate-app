@@ -17,16 +17,16 @@ function App() {
         )
           .then((resp) => resp.json())
           .then((data) => {
-            if (data.rates !== undefined) {
-              setResult(Math.round(data.rates[toValue] * 100) / 100);
-              setIsLoading(false);
-            } else {
-              setResult(value);
-              setIsLoading(false);
-            }
+            setResult(Math.round(data.rates[toValue] * 100) / 100);
+            setIsLoading(false);
           });
       }
-      fetchCurrency();
+
+      if (fromValue === toValue) {
+        setResult(value);
+      } else {
+        fetchCurrency();
+      }
     },
     [value, fromValue, toValue]
   );
