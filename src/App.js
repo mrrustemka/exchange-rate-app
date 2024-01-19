@@ -25,32 +25,20 @@ function App() {
     [value, fromValue, toValue]
   );
 
-  const handleChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleFromChange = (event) => {
-    setFromValue(event.target.value);
-  };
-
-  const handleToChange = (event) => {
-    setToValue(event.target.value);
-  };
-
   function handleResult(data) {
     setResult(data);
   }
 
   return (
     <div>
-      <input type="text" onChange={handleChange} value={value} />
-      <select onChange={handleFromChange} value={fromValue}>
+      <input type="text" onChange={(e) => setValue(e.target.value)} value={value} />
+      <select onChange={(e) => setFromValue(e.target.value)} value={fromValue}>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <select onChange={handleToChange} value={toValue}>
+      <select onChange={(e) => setToValue(e.target.value)} value={toValue}>
         <option value="EUR">EUR</option>
         <option value="USD">USD</option>
         <option value="CAD">CAD</option>
