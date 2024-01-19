@@ -2,22 +2,23 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState(1);
   const [fromValue, setFromValue] = useState("USD");
   const [toValue, setToValue] = useState("EUR");
   const [result, setResult] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(
     function () {
       async function fetchCurrency() {
+        setIsLoading(true);
         const convert = fetch(
           `https://api.frankfurter.app/latest?amount=${value}&from=${fromValue}&to=${toValue}`
         )
           .then((resp) => resp.json())
           .then((data) => {
-            if (data.rates !== undefined) {
-              setResult(Math.round(data.rates[toValue] * 100) / 100);
-            }
+            setIsLoading(false);
+            setResult(Math.round(data.rates[toValue] * 100) / 100);
           });
       }
       fetchCurrency();
@@ -44,9 +45,7 @@ function App() {
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <p>
-        {result} {toValue}
-      </p>
+      <p>{isLoading ? "Loading" : result} {toValue}</p>
     </div>
   );
 }
