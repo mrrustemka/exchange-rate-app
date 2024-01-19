@@ -17,8 +17,13 @@ function App() {
         )
           .then((resp) => resp.json())
           .then((data) => {
-            setIsLoading(false);
-            setResult(Math.round(data.rates[toValue] * 100) / 100);
+            if (data.rates !== undefined) {
+              setResult(Math.round(data.rates[toValue] * 100) / 100);
+              setIsLoading(false);
+            } else {
+              setResult(value);
+              setIsLoading(false);
+            }
           });
       }
       fetchCurrency();
@@ -32,20 +37,31 @@ function App() {
         type="text"
         onChange={(e) => setValue(e.target.value)}
         value={value}
+        disabled={isLoading}
       />
-      <select onChange={(e) => setFromValue(e.target.value)} value={fromValue}>
+      <select
+        onChange={(e) => setFromValue(e.target.value)}
+        value={fromValue}
+        disabled={isLoading}
+      >
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <select onChange={(e) => setToValue(e.target.value)} value={toValue}>
+      <select
+        onChange={(e) => setToValue(e.target.value)}
+        value={toValue}
+        disabled={isLoading}
+      >
         <option value="EUR">EUR</option>
         <option value="USD">USD</option>
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <p>{isLoading ? "Loading" : result} {toValue}</p>
+      <p>
+        {isLoading ? "Loading..." : result} {toValue}
+      </p>
     </div>
   );
 }
