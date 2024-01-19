@@ -16,7 +16,7 @@ function App() {
           .then((resp) => resp.json())
           .then((data) => {
             if (data.rates !== undefined) {
-              handleResult(data.rates[toValue]);
+              setResult(data.rates[toValue]);
             }
           });
       }
@@ -24,10 +24,6 @@ function App() {
     },
     [value, fromValue, toValue]
   );
-
-  function handleResult(data) {
-    setResult(data);
-  }
 
   return (
     <div>
