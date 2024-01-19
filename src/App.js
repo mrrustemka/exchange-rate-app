@@ -10,13 +10,13 @@ function App() {
   useEffect(
     function () {
       async function fetchCurrency() {
-        const result = fetch(
+        const convert = fetch(
           `https://api.frankfurter.app/latest?amount=${value}&from=${fromValue}&to=${toValue}`
         )
           .then((resp) => resp.json())
           .then((data) => {
             if (data.rates !== undefined) {
-              setResult(data.rates[toValue]);
+              setResult(Math.round(data.rates[toValue] * 100) / 100);
             }
           });
       }
@@ -27,7 +27,11 @@ function App() {
 
   return (
     <div>
-      <input type="text" onChange={(e) => setValue(e.target.value)} value={value} />
+      <input
+        type="text"
+        onChange={(e) => setValue(e.target.value)}
+        value={value}
+      />
       <select onChange={(e) => setFromValue(e.target.value)} value={fromValue}>
         <option value="USD">USD</option>
         <option value="EUR">EUR</option>
