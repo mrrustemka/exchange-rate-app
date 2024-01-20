@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Input from "./components/Input";
+import Currency from "./components/Currency";
 import "./App.css";
 
 function App() {
@@ -35,28 +36,12 @@ function App() {
   return (
     <div class="form-floating mb-3">
       <Input value={value} setValue={setValue} isLoading={isLoading} />
-      <select
-        className="form-select"
-        onChange={(e) => setFromValue(e.target.value)}
+      <Currency
         value={fromValue}
-        disabled={isLoading}
-      >
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="CAD">CAD</option>
-        <option value="INR">INR</option>
-      </select>
-      <select
-        className="form-select"
-        onChange={(e) => setToValue(e.target.value)}
-        value={toValue}
-        disabled={isLoading}
-      >
-        <option value="EUR">EUR</option>
-        <option value="USD">USD</option>
-        <option value="CAD">CAD</option>
-        <option value="INR">INR</option>
-      </select>
+        setValue={setFromValue}
+        isLoading={isLoading}
+      />
+      <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
       <p>
         {isLoading ? "Loading..." : result} {toValue}
       </p>
