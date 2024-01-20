@@ -33,7 +33,7 @@ function App() {
   );
 
   return (
-    <div class="input-group mb-3">
+    <div class="form-floating mb-3">
       <input
         type="text"
         class="form-control"
@@ -43,6 +43,7 @@ function App() {
         disabled={isLoading}
       />
       <select
+        className="form-select"
         onChange={(e) => setFromValue(e.target.value)}
         value={fromValue}
         disabled={isLoading}
@@ -53,6 +54,7 @@ function App() {
         <option value="INR">INR</option>
       </select>
       <select
+        className="form-select"
         onChange={(e) => setToValue(e.target.value)}
         value={toValue}
         disabled={isLoading}
