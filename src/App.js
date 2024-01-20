@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Input from "./components/Input";
 import Currency from "./components/Currency";
+import Header from "./components/Header";
 import "./App.css";
 
 function App() {
@@ -35,6 +36,11 @@ function App() {
 
   return (
     <div class="form-floating mb-3">
+      <Header
+        result={Math.round((result / value) * 100) / 100}
+        fromCur={fromValue}
+        toCur={toValue}
+      />
       <Input value={value} setValue={setValue} isLoading={isLoading} />
       <Currency
         value={fromValue}
