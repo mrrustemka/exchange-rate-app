@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Button from "react-bootstrap/Button";
 import "./App.css";
 
 function App() {
@@ -32,9 +33,11 @@ function App() {
   );
 
   return (
-    <div>
+    <div class="input-group mb-3">
       <input
         type="text"
+        class="form-control"
+        placeholder="Enter the Amount"
         onChange={(e) => setValue(e.target.value)}
         value={value}
         disabled={isLoading}
