@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Button from "react-bootstrap/Button";
+import Input from "./components/Input";
 import "./App.css";
 
 function App() {
@@ -34,14 +34,7 @@ function App() {
 
   return (
     <div class="form-floating mb-3">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter the Amount"
-        onChange={(e) => setValue(e.target.value)}
-        value={value}
-        disabled={isLoading}
-      />
+      <Input value={value} setValue={setValue} isLoading={isLoading} />
       <select
         className="form-select"
         onChange={(e) => setFromValue(e.target.value)}
