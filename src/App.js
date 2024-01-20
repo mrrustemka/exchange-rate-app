@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Input from "./components/Input";
 import Currency from "./components/Currency";
 import Header from "./components/Header";
+import Keyboard from "./components/Keyboard";
 import "./App.css";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
       <p>
         {isLoading ? "Loading..." : result} {toValue}
       </p>
+      <Keyboard value={value} setValue={setValue} />
     </div>
   );
 }
