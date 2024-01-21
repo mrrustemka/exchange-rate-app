@@ -7,21 +7,21 @@ function Keyboard({ value, setValue }) {
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "1"))}
+          onClick={(e) => setValue(value + "1")}
         >
           1
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "2"))}
+          onClick={(e) => setValue(value + "2")}
         >
           2
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "3"))}
+          onClick={(e) => setValue(value + "3")}
         >
           3
         </button>
@@ -30,21 +30,21 @@ function Keyboard({ value, setValue }) {
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "4"))}
+          onClick={(e) => setValue(value + "4")}
         >
           4
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "5"))}
+          onClick={(e) => setValue(value + "5")}
         >
           5
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "6"))}
+          onClick={(e) => setValue(value + "6")}
         >
           6
         </button>
@@ -53,21 +53,21 @@ function Keyboard({ value, setValue }) {
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "7"))}
+          onClick={(e) => setValue(value + "7")}
         >
           7
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "8"))}
+          onClick={(e) => setValue(value + "8")}
         >
           8
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "9"))}
+          onClick={(e) => setValue(value + "9")}
         >
           9
         </button>
@@ -76,25 +76,21 @@ function Keyboard({ value, setValue }) {
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "."))}
+          onClick={(e) => setValue(value + ".")}
         >
           .
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) => setValue(parseInt(value.toString() + "0"))}
+          onClick={(e) => setValue(value + "0")}
         >
           0
         </button>
         <button
           type="button"
           class="btn btn-outline-secondary"
-          onClick={(e) =>
-            setValue(
-              parseInt(value.toString().slice(0, value.toString().length - 1))
-            )
-          }
+          onClick={(e) => setValue(value.slice(0, value.length - 1))}
         >
           x
         </button>

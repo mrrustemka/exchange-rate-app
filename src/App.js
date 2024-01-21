@@ -3,21 +3,25 @@ import Input from "./components/Input";
 import Currency from "./components/Currency";
 import Header from "./components/Header";
 import Keyboard from "./components/Keyboard";
+import Button from "./components/Button";
 import "./App.css";
 
 function App() {
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState("1");
   const [fromValue, setFromValue] = useState("USD");
   const [toValue, setToValue] = useState("EUR");
   const [result, setResult] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [convert, setConvert] = useState(value);
 
   useEffect(
     function () {
       async function fetchCurrency() {
         setIsLoading(true);
         const convert = fetch(
-          `https://api.frankfurter.app/latest?amount=${value}&from=${fromValue}&to=${toValue}`
+          `https://api.frankfurter.app/latest?amount=${parseFloat(
+            value
+          )}&from=${fromValue}&to=${toValue}`
         )
           .then((resp) => resp.json())
           .then((data) => {
@@ -32,7 +36,7 @@ function App() {
         fetchCurrency();
       }
     },
-    [value, fromValue, toValue]
+    [convert]
   );
 
   return (
@@ -49,6 +53,7 @@ function App() {
         isLoading={isLoading}
       />
       <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
+      <Button setConvert={setConvert} value={value} />
       <p>
         {isLoading ? "Loading..." : result} {toValue}
       </p>
