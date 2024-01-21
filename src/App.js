@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Input from "./components/Input";
+import Output from "./components/Output";
 import Currency from "./components/Currency";
 import Header from "./components/Header";
 import Keyboard from "./components/Keyboard";
@@ -52,6 +53,13 @@ function App() {
         setValue={setFromValue}
         isLoading={isLoading}
       />
+      <Output value={result} />
+      {/* <Input
+        value={result}
+        setValue={setValue}
+        isLoading={isLoading}
+        readonly
+      /> */}
       <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
       <Button setConvert={setConvert} value={value} />
       <p>
