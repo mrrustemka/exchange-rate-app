@@ -40,6 +40,23 @@ function App() {
     [convert, fromValue, toValue]
   );
 
+  useEffect(
+    function () {
+      async function fetchHistoricalCurrency() {
+        const convert = fetch(
+          `https://api.frankfurter.app/2024-01-01..?from=${fromValue}&to=${toValue}`
+        )
+          .then((resp) => resp.json())
+          .then((data) => {
+            console.log("hist", data);
+            // setIsLoading(false);
+          });
+      }
+      fetchHistoricalCurrency();
+    },
+    [convert, fromValue, toValue]
+  );
+
   return (
     <div class="form-floating mb-3">
       <Header
@@ -56,9 +73,6 @@ function App() {
       <Output value={result} isLoading={isLoading} />
       <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
       <Button setConvert={setConvert} value={value} />
-      {/* <p>
-        {isLoading ? "Loading..." : result} {toValue}
-      </p> */}
       <Keyboard value={value} setValue={setValue} />
     </div>
   );
