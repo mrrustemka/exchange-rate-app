@@ -1,9 +1,14 @@
 import React from "react";
 
-function Output({ value }) {
+function Output({ value, isLoading }) {
   return (
     <div>
-      <input readOnly value={value}></input>
+      <input
+        type="text"
+        class="form-control"
+        readOnly
+        value={isLoading ? "Loading..." : value}
+      />
     </div>
   );
 }

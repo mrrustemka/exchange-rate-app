@@ -10,7 +10,6 @@ function Input({ value, setValue, isLoading }) {
         onChange={(e) => setValue(e.target.value)}
         value={value}
         disabled={isLoading}
-        id="test"
       />
     </div>
   );

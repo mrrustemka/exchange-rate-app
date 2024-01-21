@@ -37,7 +37,7 @@ function App() {
         fetchCurrency();
       }
     },
-    [convert]
+    [convert, fromValue, toValue]
   );
 
   return (
@@ -53,18 +53,12 @@ function App() {
         setValue={setFromValue}
         isLoading={isLoading}
       />
-      <Output value={result} />
-      {/* <Input
-        value={result}
-        setValue={setValue}
-        isLoading={isLoading}
-        readonly
-      /> */}
+      <Output value={result} isLoading={isLoading} />
       <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
       <Button setConvert={setConvert} value={value} />
-      <p>
+      {/* <p>
         {isLoading ? "Loading..." : result} {toValue}
-      </p>
+      </p> */}
       <Keyboard value={value} setValue={setValue} />
     </div>
   );
