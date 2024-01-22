@@ -5,6 +5,7 @@ import Currency from "./components/Currency";
 import Header from "./components/Header";
 import Keyboard from "./components/Keyboard";
 import Button from "./components/Button";
+import Chart from "./components/Chart";
 import "./App.css";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
   const [result, setResult] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [convert, setConvert] = useState(value);
+  const [hist, setHist] = useState();
 
   useEffect(
     function () {
@@ -49,6 +51,7 @@ function App() {
           .then((resp) => resp.json())
           .then((data) => {
             console.log("hist", data);
+            setHist(data.rates);
             // setIsLoading(false);
           });
       }
@@ -74,6 +77,7 @@ function App() {
       <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
       <Button setConvert={setConvert} value={value} />
       <Keyboard value={value} setValue={setValue} />
+      <Chart data={hist} />
     </div>
   );
 }
