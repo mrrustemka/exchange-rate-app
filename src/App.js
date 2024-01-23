@@ -15,7 +15,7 @@ function App() {
   const [result, setResult] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [convert, setConvert] = useState(value);
-  const [hist, setHist] = useState();
+  const [hist, setHist] = useState([{ "": { "": 0 } }]);
 
   useEffect(
     function () {
@@ -50,9 +50,8 @@ function App() {
         )
           .then((resp) => resp.json())
           .then((data) => {
-            console.log("hist", data);
             setHist(data.rates);
-            // setIsLoading(false);
+            setIsLoading(false);
           });
       }
       fetchHistoricalCurrency();
