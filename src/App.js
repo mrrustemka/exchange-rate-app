@@ -61,6 +61,8 @@ function App() {
     [fromValue, toValue, value]
   );
 
+  console.log(new Date().toJSON().slice(0, 10));
+
   return (
     <div class="form-floating mb-3">
       <Header
