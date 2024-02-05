@@ -11,10 +11,12 @@ import {
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
 function Chart({ data }) {
+  console.log();
   function parse(arr) {
     let answer = [];
+    const cur = Object.keys(data[Object.keys(data)[0]]);
     for (let i = 0; i < arr.length; i++) {
-      answer.push(arr[i].EUR);
+      answer.push(arr[i][cur]);
     }
     return answer;
   }

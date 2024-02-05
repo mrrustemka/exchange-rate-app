@@ -46,7 +46,9 @@ function App() {
     function () {
       async function fetchHistoricalCurrency() {
         const convert = fetch(
-          `https://api.frankfurter.app/2024-01-01..?from=${fromValue}&to=${toValue}`
+          `https://api.frankfurter.app/2024-01-01..?amount=${parseFloat(
+            value
+          )}&from=${fromValue}&to=${toValue}`
         )
           .then((resp) => resp.json())
           .then((data) => {
