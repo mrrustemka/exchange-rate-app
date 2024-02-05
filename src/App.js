@@ -21,7 +21,7 @@ function App() {
     function () {
       async function fetchCurrency() {
         setIsLoading(true);
-        const convert = fetch(
+        fetch(
           `https://api.frankfurter.app/latest?amount=${parseFloat(
             value
           )}&from=${fromValue}&to=${toValue}`
@@ -39,13 +39,13 @@ function App() {
         fetchCurrency();
       }
     },
-    [convert, fromValue, toValue]
+    [convert, fromValue, toValue, value]
   );
 
   useEffect(
     function () {
       async function fetchHistoricalCurrency() {
-        const convert = fetch(
+        fetch(
           `https://api.frankfurter.app/2024-01-01..?amount=${parseFloat(
             value
           )}&from=${fromValue}&to=${toValue}`
@@ -58,7 +58,7 @@ function App() {
       }
       fetchHistoricalCurrency();
     },
-    [convert, fromValue, toValue]
+    [fromValue, toValue, value]
   );
 
   return (
