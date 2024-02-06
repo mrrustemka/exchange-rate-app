@@ -17,9 +17,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [convert, setConvert] = useState(value);
   const [hist, setHist] = useState([{ "": { "": 0 } }]);
-  const [histDate, setHistDate] = useState(
-    new Date(new Date().getTime() - 432000000).toString()
-  );
+  const [histDate, setHistDate] = useState("2024-02-06");
 
   useEffect(
     function () {
@@ -50,7 +48,7 @@ function App() {
     function () {
       async function fetchHistoricalCurrency() {
         fetch(
-          `https://api.frankfurter.app/2024-02-05..?amount=${parseFloat(
+          `https://api.frankfurter.app/${histDate}..?amount=${parseFloat(
             value
           )}&from=${fromValue}&to=${toValue}`
         )
@@ -58,35 +56,14 @@ function App() {
           .then((data) => {
             setHist(data.rates);
             setIsLoading(false);
+            console.log(data.rates);
           });
       }
       fetchHistoricalCurrency();
     },
-    [fromValue, toValue, value]
-  );
-
-  console.log(
-    "5 days ago",
-    new Date(new Date().getTime() - 432000000).toString()
-  );
-  console.log(
-    "1 month ago",
-    new Date(new Date().getTime() - 2592000000).toString()
-  );
-  console.log(
-    "6 month ago",
-    new Date(new Date().getTime() - 15811200000).toString()
-  );
-  console.log(
-    "1 year ago",
-    new Date(new Date().getTime() - 31536000000).toString()
-  );
-  console.log(
-    "5 year ago",
-    new Date(new Date().getTime() - 157680000000).toString()
+    [fromValue, toValue, value, histDate]
   );
   console.log(histDate);
-
   return (
     <div class="form-floating mb-3">
       <Header
@@ -104,11 +81,11 @@ function App() {
       <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
       <Button setConvert={setConvert} value={value} />
       <Keyboard value={value} setValue={setValue} />
-      <ChartButton text="5 days" setHistDate={setHistDate} />
-      <ChartButton text="1 Month" setHistDate={setHistDate} />
-      <ChartButton text="6 Months" setHistDate={setHistDate} />
-      <ChartButton text="1 Year" setHistDate={setHistDate} />
-      <ChartButton text="5 Years" setHistDate={setHistDate} />
+      <ChartButton key="5days" text="5 days" setHistDate={setHistDate} />
+      <ChartButton key="1month" text="1 Month" setHistDate={setHistDate} />
+      <ChartButton key="6months" text="6 Months" setHistDate={setHistDate} />
+      <ChartButton key="1year" text="1 Year" setHistDate={setHistDate} />
+      <ChartButton key="5years" text="5 Years" setHistDate={setHistDate} />
       <Chart data={hist} />
     </div>
   );
