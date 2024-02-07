@@ -22,6 +22,7 @@ function App() {
   useEffect(
     function () {
       async function fetchCurrency() {
+        console.log("query");
         setIsLoading(true);
         fetch(
           `https://api.frankfurter.app/latest?amount=${parseFloat(
@@ -56,14 +57,18 @@ function App() {
           .then((data) => {
             setHist(data.rates);
             setIsLoading(false);
-            console.log(data.rates);
           });
       }
-      fetchHistoricalCurrency();
+
+      if (fromValue !== toValue) {
+        fetchHistoricalCurrency();
+      } else {
+        setHist([{ "": { "": 0 } }]);
+      }
     },
     [fromValue, toValue, value, histDate]
   );
-  console.log(histDate);
+  console.log(hist);
   return (
     <div class="form-floating mb-3">
       <Header
