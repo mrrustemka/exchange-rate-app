@@ -22,7 +22,6 @@ function App() {
   useEffect(
     function () {
       async function fetchCurrency() {
-        console.log("query");
         setIsLoading(true);
         fetch(
           `https://api.frankfurter.app/latest?amount=${parseFloat(
@@ -42,7 +41,7 @@ function App() {
         fetchCurrency();
       }
     },
-    [convert, fromValue, toValue, value]
+    [convert]
   );
 
   useEffect(
@@ -66,32 +65,49 @@ function App() {
         setHist([{ "": { "": 0 } }]);
       }
     },
-    [fromValue, toValue, value, histDate]
+    [histDate, convert]
   );
-  console.log(hist);
   return (
-    <div class="form-floating mb-3">
-      <Header
-        result={Math.round((result / value) * 100) / 100}
-        fromCur={fromValue}
-        toCur={toValue}
-      />
-      <Input value={value} setValue={setValue} isLoading={isLoading} />
-      <Currency
-        value={fromValue}
-        setValue={setFromValue}
-        isLoading={isLoading}
-      />
-      <Output value={result} isLoading={isLoading} />
-      <Currency value={toValue} setValue={setToValue} isLoading={isLoading} />
-      <Button setConvert={setConvert} value={value} />
-      <Keyboard value={value} setValue={setValue} />
-      <ChartButton key="5days" text="5 days" setHistDate={setHistDate} />
-      <ChartButton key="1month" text="1 Month" setHistDate={setHistDate} />
-      <ChartButton key="6months" text="6 Months" setHistDate={setHistDate} />
-      <ChartButton key="1year" text="1 Year" setHistDate={setHistDate} />
-      <ChartButton key="5years" text="5 Years" setHistDate={setHistDate} />
-      <Chart data={hist} />
+    <div class="main form-floating mb-3 bg-dark">
+      <div class="row text-center m-4">
+        <Header
+          result={Math.round((result / value) * 100) / 100}
+          fromCur={fromValue}
+          toCur={toValue}
+        />
+      </div>
+      <div class="row">
+        <div class="col-3 border border-rounded-start bg-secondary-subtle rounded-start p-4 text-center">
+          <div class="w-50 m-auto">
+            <Input value={value} setValue={setValue} isLoading={isLoading} />
+            <Currency
+              value={fromValue}
+              setValue={setFromValue}
+              isLoading={isLoading}
+            />
+            <Output value={result} isLoading={isLoading} />
+            <Currency
+              value={toValue}
+              setValue={setToValue}
+              isLoading={isLoading}
+            />
+          </div>
+          <Keyboard value={value} setValue={setValue} />
+          <Button setConvert={setConvert} value={value} />
+        </div>
+        <div class="col-8 border border-rounded-start bg-secondary-subtle rounded-end p-4  text-center">
+          <Chart data={hist} />
+          <ChartButton key="5days" text="5 days" setHistDate={setHistDate} />
+          <ChartButton key="1month" text="1 Month" setHistDate={setHistDate} />
+          <ChartButton
+            key="6months"
+            text="6 Months"
+            setHistDate={setHistDate}
+          />
+          <ChartButton key="1year" text="1 Year" setHistDate={setHistDate} />
+          <ChartButton key="5years" text="5 Years" setHistDate={setHistDate} />
+        </div>
+      </div>
     </div>
   );
 }

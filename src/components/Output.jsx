@@ -5,7 +5,7 @@ function Output({ value, isLoading }) {
     <div>
       <input
         type="text"
-        class="form-control"
+        class="form-control m-2"
         readOnly
         value={isLoading ? "Loading..." : value}
       />

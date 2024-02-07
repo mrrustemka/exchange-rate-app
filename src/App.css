@@ -1,3 +1,15 @@
+body {
+  background-color: #212529 !important;
+}
+
 .keyboard {
   display: block !important;
+}
+
+.row {
+  gap: 20px !important;
+}
+
+.keyboard-button {
+  width: 40px;
 }

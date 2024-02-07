@@ -5,7 +5,7 @@ function Input({ value, setValue, isLoading }) {
     <div>
       <input
         type="text"
-        class="form-control"
+        class="form-control m-2"
         placeholder="Enter the Amount"
         onChange={(e) => setValue(e.target.value)}
         value={value}

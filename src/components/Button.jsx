@@ -5,7 +5,7 @@ function Button({ value, setConvert }) {
     <div>
       <button
         type="button"
-        class="btn btn-secondary"
+        class="btn btn-dark"
         onClick={(e) => setConvert(value)}
       >
         Convert

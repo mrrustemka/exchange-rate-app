@@ -4,7 +4,7 @@ function Currency({ value, setValue, isLoading }) {
   return (
     <div>
       <select
-        className="form-select"
+        class="form-select  m-2"
         onChange={(e) => setValue(e.target.value)}
         value={value}
         disabled={isLoading}
