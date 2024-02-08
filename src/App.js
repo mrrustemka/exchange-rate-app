@@ -80,9 +80,9 @@ function App() {
     <div class="main form-floating mb-3 bg-dark">
       <div class="row text-center m-4">
         <Header
-        // result={Math.round((result / value) * 100) / 100}
-        // fromCur={fromValue}
-        // toCur={toValue}
+          result={Math.round((result / value) * 100) / 100}
+          fromCur={fromValue}
+          toCur={toValue}
         />
       </div>
       <div class="row">
@@ -106,15 +106,65 @@ function App() {
         </div>
         <div class="col-8 border border-rounded-start bg-secondary-subtle rounded-end p-4  text-center">
           <Chart data={hist} />
-          <ChartButton key="5days" text="5 days" setHistDate={setHistDate} />
-          <ChartButton key="1month" text="1 Month" setHistDate={setHistDate} />
+          <ChartButton
+            key="5days"
+            text="5 Days"
+            setHistDate={setHistDate}
+            period={new Intl.DateTimeFormat("ru-RU")
+              .format(new Date(new Date().getTime() - 432e6))
+              .split(".")}
+          />
+          <ChartButton
+            key="10days"
+            text="10 Days"
+            setHistDate={setHistDate}
+            period={new Intl.DateTimeFormat("ru-RU")
+              .format(new Date(new Date().getTime() - 864e6))
+              .split(".")}
+          />
+          <ChartButton
+            key="1month"
+            text="1 Month"
+            setHistDate={setHistDate}
+            period={new Intl.DateTimeFormat("ru-RU")
+              .format(new Date(new Date().getTime() - 2592e6))
+              .split(".")}
+          />
+          <ChartButton
+            key="3months"
+            text="3 Months"
+            setHistDate={setHistDate}
+            period={new Intl.DateTimeFormat("ru-RU")
+              .format(new Date(new Date().getTime() - 7776e6))
+              .split(".")}
+          />
           <ChartButton
             key="6months"
             text="6 Months"
             setHistDate={setHistDate}
+            period={new Intl.DateTimeFormat("ru-RU")
+              .format(new Date(new Date().getTime() - 158112e5))
+              .split(".")}
           />
-          <ChartButton key="1year" text="1 Year" setHistDate={setHistDate} />
-          <ChartButton key="5years" text="5 Years" setHistDate={setHistDate} />
+          <ChartButton
+            key="1year"
+            text="1 Year"
+            setHistDate={setHistDate}
+            period={new Intl.DateTimeFormat("ru-RU")
+              .format(new Date(new Date().getTime() - 31536e6))
+              .split(".")}
+          />
+          <ChartButton
+            key="3years"
+            text="3 Years"
+            setHistDate={setHistDate}
+            period={new Intl.DateTimeFormat("ru-RU")
+              .format(new Date(new Date().getTime() - 94608e6))
+              .split(".")}
+          />
+          <ChartButton key="5years" text="5 Years" setHistDate={setHistDate} period={new Intl.DateTimeFormat("ru-RU")
+      .format(new Date(new Date().getTime() - 15768e7))
+      .split(".")}/>
         </div>
       </div>
     </div>
