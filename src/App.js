@@ -6,8 +6,16 @@ import Header from "./components/Header";
 import Keyboard from "./components/Keyboard";
 import Button from "./components/Button";
 import Chart from "./components/Chart";
-import "./App.css";
 import ChartButton from "./components/ChartButton";
+import "./App.css";
+
+function getDate() {
+  let date = new Intl.DateTimeFormat("ru-RU")
+    .format(new Date(new Date().getTime() - 2592000000))
+    .split(".");
+  date.push(date[1], date[0]);
+  return date.slice(2).join("-");
+}
 
 function App() {
   const [value, setValue] = useState("1");
@@ -15,9 +23,9 @@ function App() {
   const [toValue, setToValue] = useState("EUR");
   const [result, setResult] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [convert, setConvert] = useState(value);
+  const [convert, setConvert] = useState(1);
   const [hist, setHist] = useState([{ "": { "": 0 } }]);
-  const [histDate, setHistDate] = useState("2024-02-06");
+  const [histDate, setHistDate] = useState(getDate());
 
   useEffect(
     function () {
@@ -46,7 +54,8 @@ function App() {
 
   useEffect(
     function () {
-      async function fetchHistoricalCurrency() {
+      async function fetchHistCurrency() {
+        setIsLoading(true);
         fetch(
           `https://api.frankfurter.app/${histDate}..?amount=${parseFloat(
             value
@@ -60,7 +69,7 @@ function App() {
       }
 
       if (fromValue !== toValue) {
-        fetchHistoricalCurrency();
+        fetchHistCurrency();
       } else {
         setHist([{ "": { "": 0 } }]);
       }
@@ -71,9 +80,9 @@ function App() {
     <div class="main form-floating mb-3 bg-dark">
       <div class="row text-center m-4">
         <Header
-          result={Math.round((result / value) * 100) / 100}
-          fromCur={fromValue}
-          toCur={toValue}
+        // result={Math.round((result / value) * 100) / 100}
+        // fromCur={fromValue}
+        // toCur={toValue}
         />
       </div>
       <div class="row">

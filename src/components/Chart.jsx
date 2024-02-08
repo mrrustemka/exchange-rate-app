@@ -7,11 +7,9 @@ import {
   LinearScale,
   PointElement,
 } from "chart.js";
-
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement);
 
 function Chart({ data }) {
-  console.log();
   function parse(arr) {
     let answer = [];
     const cur = Object.keys(data[Object.keys(data)[0]]);
@@ -47,12 +45,6 @@ function Chart({ data }) {
           top: 10,
           bottom: 30,
         },
-      },
-    },
-    scales: {
-      y: {
-        // min : 3,
-        // max: 6
       },
     },
   };
