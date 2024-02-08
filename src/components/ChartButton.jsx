@@ -5,10 +5,10 @@ function ChartButton({ text, setHistDate, period }) {
   period = period.slice(2).join("-");
 
   return (
-    <div class="d-inline m-2">
+    <div className="d-inline m-2">
       <button
         type="button"
-        class="btn btn-dark"
+        className="btn btn-dark"
         onClick={(e) => setHistDate(period)}
       >
         {text}

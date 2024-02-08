@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <div class="p-4">
+  <div className="p-4">
     <App />
   </div>
 );

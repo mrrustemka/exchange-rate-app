@@ -77,17 +77,17 @@ function App() {
     [histDate, convert]
   );
   return (
-    <div class="main form-floating mb-3 bg-dark">
-      <div class="row text-center m-4">
+    <div className="main form-floating mb-3 bg-dark">
+      <div className="row text-center m-4">
         <Header
           result={Math.round((result / value) * 100) / 100}
           fromCur={fromValue}
           toCur={toValue}
         />
       </div>
-      <div class="row">
-        <div class="col-3 border border-rounded-start bg-secondary-subtle rounded-start p-4 text-center">
-          <div class="w-50 m-auto">
+      <div className="row">
+        <div className="col-3 border border-rounded-start bg-secondary-subtle rounded-start p-4 text-center">
+          <div className="w-50 m-auto">
             <Input value={value} setValue={setValue} isLoading={isLoading} />
             <Currency
               value={fromValue}
@@ -104,7 +104,7 @@ function App() {
           <Keyboard value={value} setValue={setValue} />
           <Button setConvert={setConvert} value={value} />
         </div>
-        <div class="col-8 border border-rounded-start bg-secondary-subtle rounded-end p-4  text-center">
+        <div className="col-8 border border-rounded-start bg-secondary-subtle rounded-end p-4  text-center">
           <Chart data={hist} />
           <ChartButton
             key="5days"
